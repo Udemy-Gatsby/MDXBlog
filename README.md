@@ -1,3 +1,5 @@
+<a href="https://mymdxblog.netlify.app">live version</a>
+
 # GATSBY MDX BLOG
 
 ## Initially Recorded with V2
