@@ -7,7 +7,7 @@ import Banner from '../components/Banner'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 const PostTemplate = ({data}) => {
-  const {mdx:{frontmatter:{title, category, image, date}, body}} = data;
+  const {mdx:{frontmatter:{title, category, image, date, embeddedImages}, body}} = data;
   return <Layout>
     <Hero />
     <Wrapper>
@@ -24,7 +24,7 @@ const PostTemplate = ({data}) => {
           <p>{date}</p>
           <div className="underline" />
         </div>
-        <MDXRenderer>{body}</MDXRenderer>
+        <MDXRenderer embeddedImages={embeddedImages}>{body}</MDXRenderer>
       </article>
       {/* banner */}
       <article>
@@ -44,6 +44,11 @@ export const query = graphql`
         readTime
         title
         image {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        embeddedImages {
           childImageSharp {
             gatsbyImageData
           }
